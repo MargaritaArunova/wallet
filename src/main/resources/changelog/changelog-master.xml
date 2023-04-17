@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="changelog/release-1.0/WALLET-2023-04-17-create-tables.xml"/>
+    <include file="changelog/release-1.0/WALLET-2023-04-17-insert-default-categories.xml"/>
+    <include file="changelog/release-1.0/WALLET-2023-04-17-insert-currency-info.xml"/>
+
+</databaseChangeLog>

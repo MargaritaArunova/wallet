@@ -1,0 +1,66 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="WALLET-2023-04-17-insert-currencies" author="mdarunova">
+        <insert tableName="currency">
+            <column name="id" valueComputed="nextval('currency_seq')"/>
+            <column name="code" value="RUB"/>
+            <column name="full_description" value="Российский рубль (RUB)"/>
+            <column name="short_description" value="Российский рубль"/>
+            <column name="symbol" value="₽"/>
+            <column name="value" value="1"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="id" valueComputed="nextval('currency_seq')"/>
+            <column name="code" value="USD"/>
+            <column name="full_description" value="Доллар США"/>
+            <column name="short_description" value="Доллар США (USD)"/>
+            <column name="symbol" value="$"/>
+            <column name="value" value="60"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="id" valueComputed="nextval('currency_seq')"/>
+            <column name="code" value="EUR"/>
+            <column name="full_description" value="Евро"/>
+            <column name="short_description" value="Евро (EUR)"/>
+            <column name="symbol" value="€"/>
+            <column name="value" value="61"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="id" valueComputed="nextval('currency_seq')"/>
+            <column name="code" value="CHF"/>
+            <column name="full_description" value="Швейцарские франки"/>
+            <column name="short_description" value="Швейцарские франки (CHF)"/>
+            <column name="symbol" value="₣"/>
+            <column name="value" value="63"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="id" valueComputed="nextval('currency_seq')"/>
+            <column name="code" value="JPY"/>
+            <column name="full_description" value="Японская иена"/>
+            <column name="short_description" value="Японская иена (JPY)"/>
+            <column name="symbol" value="¥"/>
+            <column name="value" value="0.45"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="id" valueComputed="nextval('currency_seq')"/>
+            <column name="code" value="SEK"/>
+            <column name="full_description" value="Шведская крона"/>
+            <column name="short_description" value="Шведская крона (SEK)"/>
+            <column name="symbol" value="kr"/>
+            <column name="value" value="5"/>
+        </insert>
+        <insert tableName="currency">
+            <column name="id" valueComputed="nextval('currency_seq')"/>
+            <column name="code" value="GBP"/>
+            <column name="full_description" value="Фунт стерлингов"/>
+            <column name="short_description" value="Фунт стерлингов (GBP)"/>
+            <column name="symbol" value="£"/>
+            <column name="value" value="73"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

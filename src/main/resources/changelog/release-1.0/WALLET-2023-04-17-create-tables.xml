@@ -1,0 +1,204 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="WALLET-2023-04-17-create-person-table" author="mdarunova">
+        <createTable tableName="person">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="varchar(64)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="balance" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="income" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="spendings" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="WALLET-2023-04-17-create-person-id-seq" author="mdarunova">
+        <createSequence
+                sequenceName="person_seq"
+                startValue="1"
+                incrementBy="1"/>
+    </changeSet>
+
+
+    <changeSet id="WALLET-2023-04-17-create-wallet-table" author="mdarunova">
+        <createTable tableName="wallet">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="person_id" type="bigint">
+                <constraints foreignKeyName="wallet_person_person_id_fk"
+                             referencedTableName="person"
+                             referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+            <column name="is_hidden" type="int" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_limit" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="income" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="spendings" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="WALLET-2023-04-17-create-wallet-id-seq" author="mdarunova">
+        <createSequence
+                sequenceName="wallet_seq"
+                startValue="1"
+                incrementBy="1"/>
+    </changeSet>
+
+
+    <changeSet id="WALLET-2023-04-17-create-category-table" author="mdarunova">
+        <createTable tableName="category">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="person_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="varchar(16)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="WALLET-2023-04-17-create-category-id-seq" author="mdarunova">
+        <createSequence
+                sequenceName="category_seq"
+                startValue="1"
+                incrementBy="1"/>
+    </changeSet>
+
+
+    <changeSet id="WALLET-2023-04-17-create-operation-table" author="mdarunova">
+        <createTable tableName="operation">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="wallet_id" type="bigint">
+                <constraints foreignKeyName="operation_wallet_wallet_id_fk"
+                             referencedTableName="wallet"
+                             referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+            <column name="category_id" type="bigint">
+                <constraints foreignKeyName="operation_category_category_id_fk"
+                             referencedTableName="category"
+                             referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+            <column name="type" type="varchar(32)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="decimal(20,2)" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="WALLET-2023-04-17-create-operation-id-seq" author="mdarunova">
+        <createSequence
+                sequenceName="operation_seq"
+                startValue="1"
+                incrementBy="1"/>
+    </changeSet>
+
+
+    <changeSet id="WALLET-2023-04-17-create-currency-table" author="mdarunova">
+        <createTable tableName="currency">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="code" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="short_description" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="full_description" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="symbol" type="varchar(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="WALLET-2023-04-17-create-currency-seq" author="mdarunova">
+        <createSequence
+                sequenceName="currency_seq"
+                startValue="1"
+                incrementBy="1"/>
+    </changeSet>
+
+
+    <changeSet id="WALLET-2023-04-17-create-currency-log-table" author="mdarunova">
+        <createTable tableName="currency_log">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="eur" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="usd" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="chf" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="jpy" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sek" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gbp" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="WALLET-2023-04-17-create-currency-log-seq" author="mdarunova">
+        <createSequence
+                sequenceName="currency_log_seq"
+                startValue="1"
+                incrementBy="1"/>
+    </changeSet>
+
+</databaseChangeLog>

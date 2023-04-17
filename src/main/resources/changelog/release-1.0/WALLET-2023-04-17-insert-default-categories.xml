@@ -1,0 +1,94 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="WALLET-2023-04-17-insert-categories" author="mdarunova">
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Зарплата"/>
+            <column name="type" value="INCOME"/>
+            <column name="color" value="1"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Подработка"/>
+            <column name="type" value="INCOME"/>
+            <column name="color" value="1"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Подарок"/>
+            <column name="type" value="INCOME"/>
+            <column name="color" value="1"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Капитализация"/>
+            <column name="type" value="INCOME"/>
+            <column name="color" value="1"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Кафе и рестораны"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Супермаркеты"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Спортзал"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Общественный транспорт"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Медицина"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Бензин"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Квартплата"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+        <insert tableName="category">
+            <column name="id" valueComputed="nextval('category_seq')"/>
+            <column name="name" value="Отпуск"/>
+            <column name="type" value="SPENDING"/>
+            <column name="color" value="2"/>
+            <column name="person_id" value="-1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
