@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  database:
+    image: 'postgres:latest'
+    environment:
+      - POSTGRES_DB=wallet
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=dbpasssword
+    ports:
+      - '5432:5432'
+    command: postgres -p 5432
+
+  wallet:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    depends_on:
+      - database
+    environment:
+      - DATASOURCE_URL=jdbc:postgresql://database:5432/wallet
+      - DATASOURCE_NAME=dbuser
+      - DATASOURCE_PASSWORD=dbpasssword
+    ports:
+      - '9090:9090'
