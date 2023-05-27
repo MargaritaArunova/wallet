@@ -1,7 +1,7 @@
 package com.wallet.controller;
 
-import com.wallet.model.dto.CurrencyDto;
-import com.wallet.service.CurrencyService;
+import com.wallet.model.dto.currency.CurrencyDto;
+import com.wallet.service.currency.CurrencyService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

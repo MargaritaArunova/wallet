@@ -5,9 +5,14 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Getter
 @Setter
@@ -15,6 +20,7 @@ import java.time.Instant;
 @Entity(name = "currency_log")
 @SequenceGenerator(allocationSize = 1, name = "currency_log_seq", sequenceName = "currency_log_seq")
 public class CurrencyLog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "currency_log_seq")
     private Long id;

@@ -1,7 +1,7 @@
 package com.wallet.mapper;
 
 import com.wallet.config.MapStructConfig;
-import com.wallet.model.dto.PersonDto;
+import com.wallet.model.dto.person.PersonDto;
 import com.wallet.model.entity.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

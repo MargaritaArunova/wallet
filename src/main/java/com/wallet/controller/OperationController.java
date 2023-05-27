@@ -1,15 +1,22 @@
 package com.wallet.controller;
 
-import com.wallet.model.dto.OperationRequestDto;
-import com.wallet.model.dto.OperationResponseDto;
-import com.wallet.service.OperationService;
+import com.wallet.model.dto.operation.OperationRequestDto;
+import com.wallet.model.dto.operation.OperationResponseDto;
+import com.wallet.service.operation.OperationService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
+import javax.validation.Valid;
 
 @RequestMapping("wallet/{walletId}/operation")
 @RestController
@@ -22,8 +29,8 @@ public class OperationController {
     @GetMapping(value = "/{id}")
     @Transactional
     public OperationResponseDto getOperation(
-            @PathVariable("id") Long id,
-            @RequestHeader("email") String email
+        @PathVariable("id") Long id,
+        @RequestHeader("email") String email
     ) {
         return operationService.getOperationDtoById(id, email);
     }
@@ -32,8 +39,8 @@ public class OperationController {
     @GetMapping
     @Transactional
     public List<OperationResponseDto> getAllOperations(
-            @PathVariable("walletId") Long walletId,
-            @RequestHeader("email") String email
+        @PathVariable("walletId") Long walletId,
+        @RequestHeader("email") String email
     ) {
         return operationService.getAllOperationsByWalletId(walletId, email);
     }
@@ -42,18 +49,18 @@ public class OperationController {
     @PostMapping
     @Transactional
     public OperationResponseDto createOperation(
-            @PathVariable("walletId") Long walletId,
-            @Valid @RequestBody OperationRequestDto dto,
-            @RequestHeader("email") String email) {
+        @PathVariable("walletId") Long walletId,
+        @Valid @RequestBody OperationRequestDto dto,
+        @RequestHeader("email") String email) {
         return operationService.createOperation(walletId, dto, email);
     }
 
     @Operation(summary = "Удаление операции")
     @DeleteMapping(value = "/{id}")
     public void deleteOperation(
-            @PathVariable("walletId") Long walletId,
-            @PathVariable("id") Long id,
-            @RequestHeader("email") String email
+        @PathVariable("walletId") Long walletId,
+        @PathVariable("id") Long id,
+        @RequestHeader("email") String email
     ) {
         operationService.deleteOperationById(id, walletId, email);
     }

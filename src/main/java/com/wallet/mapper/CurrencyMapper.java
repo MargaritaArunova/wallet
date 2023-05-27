@@ -1,7 +1,7 @@
 package com.wallet.mapper;
 
 import com.wallet.config.MapStructConfig;
-import com.wallet.model.dto.CurrencyDto;
+import com.wallet.model.dto.currency.CurrencyDto;
 import com.wallet.model.entity.Currency;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,9 +1,10 @@
 package com.wallet.mapper;
 
 import com.wallet.config.MapStructConfig;
-import com.wallet.model.dto.CurrencyDto;
-import com.wallet.model.dto.WalletDto;
-import com.wallet.model.dto.WalletDtoResponse;
+import com.wallet.model.dto.currency.CurrencyDto;
+import com.wallet.model.dto.wallet.WalletCreateDto;
+import com.wallet.model.dto.wallet.WalletDto;
+import com.wallet.model.dto.wallet.WalletDtoResponse;
 import com.wallet.model.entity.Wallet;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
@@ -17,7 +18,11 @@ public interface WalletMapper {
 
     @Mapping(target = "person", ignore = true)
     @Mapping(target = "operations", ignore = true)
-    Wallet map(WalletDto dto);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "balance", ignore = true)
+    @Mapping(target = "income", ignore = true)
+    @Mapping(target = "spendings", ignore = true)
+    Wallet map(WalletCreateDto dto);
 
     @Mapping(target = "limitExceeded", ignore = true)
     WalletDto map(Wallet wallet);
