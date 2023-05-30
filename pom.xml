@@ -180,6 +180,7 @@
                         <exclude>com/**/mapper/*.class</exclude>
                         <exclude>com/**/model/**/*.class</exclude>
                         <exclude>com/**/config/*.class</exclude>
+                        <exclude>com/**/controller/*.class</exclude>
                         <exclude>com/wallet/WalletApplication.class</exclude>
                     </excludes>
                 </configuration>
